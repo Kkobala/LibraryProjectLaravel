@@ -32,7 +32,7 @@ class BooksController extends Controller
         $book->status = $request->status;
         $book->save();
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('success', 'Book added successfully.');
     }
 
     public function show(Books $book)
@@ -55,12 +55,13 @@ class BooksController extends Controller
 
         $book->update($request->all());
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('success', 'Book updated successfully.');
     }
 
     public function destroy(Books $book)
     {
         $book->delete();
-        return redirect()->route('books.index');
+
+        return redirect()->route('books.index')->with('success', 'Book deleted successfully.');
     }
 }
